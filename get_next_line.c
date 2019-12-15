@@ -68,8 +68,37 @@ char	*ft_next(char *result)
 
 int		ft_freeresult(char *result, int i)
 {
+	printf("wait what?\n");
 	free(result);
 	return (i);
+}
+
+char	*ft_strjoin(char *s1, char const *s2)
+{
+	char	*ret;
+	size_t	i;
+	size_t	j;
+
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	if (!(ret = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
+		return (NULL);
+	i = 0;
+	while (s1[i])
+	{
+		ret[i] = s1[i];
+		i++;
+	}
+	j = 0;
+	while (s2[j])
+	{
+		ret[i] = s2[j];
+		i++;
+		j++;
+	}
+	ret[i] = '\0';
+	free(s1);
+	return (ret);
 }
 
 int		get_next_line(int fd, char **line)
@@ -89,7 +118,7 @@ int		get_next_line(int fd, char **line)
 	{
 		i = read(fd, buf, BUFFER_SIZE);
 		buf[i] = '\0';
-		ft_strlcat(result, buf, ft_strlen(result) + ft_strlen(buf) + 1);
+		result = ft_strjoin(result, buf);
 	}
 	if ((result[0] == '\0' && i == 0) || i == -1)
 		return (ft_freeresult(result, i));
