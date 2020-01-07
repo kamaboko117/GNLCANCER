@@ -6,7 +6,7 @@
 /*   By: asaboure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 16:26:02 by asaboure          #+#    #+#             */
-/*   Updated: 2019/12/12 21:01:04 by asaboure         ###   ########.fr       */
+/*   Updated: 2020/01/07 17:35:25 by asaboure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ char	*ft_next(char *result)
 
 int		ft_freeresult(char *result, int i)
 {
-	printf("wait what?\n");
 	free(result);
 	return (i);
 }
