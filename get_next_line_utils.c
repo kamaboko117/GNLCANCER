@@ -6,12 +6,13 @@
 /*   By: asaboure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 17:42:44 by asaboure          #+#    #+#             */
-/*   Updated: 2019/12/12 21:00:52 by asaboure         ###   ########.fr       */
+/*   Updated: 2020/01/20 18:03:21 by asaboure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 size_t	ft_strlen(const char *s)
 {

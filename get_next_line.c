@@ -6,7 +6,7 @@
 /*   By: asaboure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 16:26:02 by asaboure          #+#    #+#             */
-/*   Updated: 2020/01/07 17:35:25 by asaboure         ###   ########.fr       */
+/*   Updated: 2020/01/20 18:07:18 by asaboure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,30 +23,13 @@ int		is_nl(char *str)
 	size_t	i;
 
 	i = 0;
-	while (str[i++])
+	while (str[i])
+	{
 		if (str[i] == '\n')
 			return (1);
-	return (0);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	char	*ret;
-	size_t	i;
-
-	i = 0;
-	while (s1[i])
-		i++;
-	if (!(ret = (char *)malloc(sizeof(char) * i + 1)))
-		return (NULL);
-	i = 0;
-	while (s1[i])
-	{
-		ret[i] = s1[i];
 		i++;
 	}
-	ret[i] = '\0';
-	return (ret);
+	return (0);
 }
 
 char	*ft_next(char *result)
@@ -66,9 +49,13 @@ char	*ft_next(char *result)
 	return (result);
 }
 
-int		ft_freeresult(char *result, int i)
+int		ft_freeresult(char **result, char **line, int i)
 {
-	free(result);
+	*line = ft_strdup_nl(*result);
+	if (!(*result = (char *)malloc(1)))
+		return (-1);
+	*result = NULL;
+	free(*result);
 	return (i);
 }
 
@@ -115,12 +102,13 @@ int		get_next_line(int fd, char **line)
 	}
 	while (i > 0 && is_nl(result) == 0)
 	{
-		i = read(fd, buf, BUFFER_SIZE);
+		if ((i = read(fd, buf, BUFFER_SIZE)) == -1)
+			return (-1);
 		buf[i] = '\0';
 		result = ft_strjoin(result, buf);
 	}
-	if ((result[0] == '\0' && i == 0) || i == -1)
-		return (ft_freeresult(result, i));
+	if ((i == 0) || i == -1)
+		return (ft_freeresult(&result, line, i));
 	*line = ft_strdup_nl(result);
 	result = ft_next(result);
 	if (result == NULL || line == NULL)
