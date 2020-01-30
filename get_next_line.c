@@ -6,7 +6,7 @@
 /*   By: asaboure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 16:26:02 by asaboure          #+#    #+#             */
-/*   Updated: 2020/01/20 18:07:18 by asaboure         ###   ########.fr       */
+/*   Updated: 2020/01/30 17:01:46 by asaboure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,10 @@ char	*ft_next(char *result)
 
 int		ft_freeresult(char **result, char **line, int i)
 {
-	*line = ft_strdup_nl(*result);
-	if (!(*result = (char *)malloc(1)))
+	if ((*line = ft_strdup_nl(*result)) == NULL)
 		return (-1);
-	*result = NULL;
-	free(*result);
+	if (*result)
+		free(*result);
 	return (i);
 }
 

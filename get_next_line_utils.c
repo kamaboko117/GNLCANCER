@@ -6,7 +6,7 @@
 /*   By: asaboure <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/05 17:42:44 by asaboure          #+#    #+#             */
-/*   Updated: 2020/01/28 16:10:40 by asaboure         ###   ########.fr       */
+/*   Updated: 2020/01/30 16:21:00 by asaboure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ size_t	ft_strlen_nl(const char *s)
 	return (i);
 }
 
-char	*ft_strdup_nl(const char *s1)
+char	*ft_strdup_nl(char *s1)
 {
 	char	*ret;
 	size_t	i;
