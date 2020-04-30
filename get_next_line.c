@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asaboure <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: asaboure <asaboure@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/10 16:26:02 by asaboure          #+#    #+#             */
-/*   Updated: 2020/01/30 17:01:46 by asaboure         ###   ########.fr       */
+/*   Updated: 2020/04/30 17:39:22 by asaboure         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ int		ft_freeresult(char **result, char **line, int i)
 	if ((*line = ft_strdup_nl(*result)) == NULL)
 		return (-1);
 	if (*result)
+	{
+		*result = NULL;
 		free(*result);
+	}
 	return (i);
 }
 
